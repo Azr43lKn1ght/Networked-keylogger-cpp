@@ -13,7 +13,7 @@ this can be obfuscatedb or packed to be a stealthy malware with defensive evasio
 | . \  __/ |_| | | (_) | (_| | (_| |  __/ |   
 |_|\_\___|\__, |_|\___/ \__, |\__, |\___|_|   
           |___/         |___/ |___/           
-``````
+```
 Compilations
 Actual windows Keylogger Malware:
 g++ .\keylogger.cpp -o .\keylogger.exe -lws2_32 -lcrypto -lssl
