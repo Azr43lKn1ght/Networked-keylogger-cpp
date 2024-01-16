@@ -15,7 +15,7 @@ unsigned char aes_key[] = {
 
 void decryptAes(const unsigned char* cipherText, size_t cipherTextLen, unsigned char* plainText) {
     AES_KEY dec_key;
-    AES_set_decrypt_key(aes_key, 128, &dec_key); // Use the same key length as in the encryption
+    AES_set_decrypt_key(aes_key, 128, &dec_key); 
 
     size_t blocks = cipherTextLen / AES_BLOCK_SIZE;
     for (size_t i = 0; i < blocks; i++) {
@@ -39,7 +39,7 @@ int main() {
      Prepare the sockaddr_in structure
     server.sin_family = AF_INET;
     server.sin_addr.s_addr = INADDR_ANY;
-    server.sin_port = htons(6969); // Set the port number
+    server.sin_port = htons(6969); 
 
      Bind
     if (bind(socket_desc, (struct sockaddr *)&server, sizeof(server)) < 0) {
@@ -66,7 +66,7 @@ int main() {
      Receive a message from client
     while ((read_size = recv(client_sock, client_message, 2000, 0)) > 0) {
          Decrypt received data
-        memset(decryptedText, 0, sizeof(decryptedText)); // Clear decryptedText buffer
+        memset(decryptedText, 0, sizeof(decryptedText)); 
         decryptAes((unsigned char*)client_message, read_size, decryptedText);
 
          Print decrypted text

