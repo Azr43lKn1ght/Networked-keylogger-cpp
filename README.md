@@ -25,7 +25,7 @@ Linux client:
 g++ -o sneakykeyhooklistenerlinux sneakykeyhooklistenerlinux.cpp -lssl -lcrypto
 
 
-[+] Client should be run first before the krylogger for it to connect to the client.
+[+] Client should be run first before the keylogger for it to connect to the client.
 [+] The keylogger timing is in default 15 seconds but can be edited on crono::seconds
 [+] usage of it in non-etical purposes does not hold me responsible for any damage or harm caused by it.
 [+] This is for educational purposes only
