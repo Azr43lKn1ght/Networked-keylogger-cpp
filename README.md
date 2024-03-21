@@ -33,7 +33,6 @@ g++ -o sneakykeyhooklistenerlinux sneakykeyhooklistenerlinux.cpp -lssl -lcrypto
 @Author
 Azr43lKn1ght a.k.a Nithin Chenthur Prabhu
 
-@collaborators
+@contributors
 Anuush MB
-Mayank Kandari
 ```
